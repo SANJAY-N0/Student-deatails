@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Registration</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 100%, rgba(252, 176, 69, 1) 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      background-color: transparent;
+      border-radius: 10px;
+      padding: 30px 25px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 10px 20px 10px 10px rgba(0.5, 0, 0, 0.05);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: white;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: white;
+      font-size: 18px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      background-color: transparent;
+      color: white;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    select {
+      color: white;
+      background-color: transparent;
+    }
+
+    select option {
+      background-color: transparent;
+      color: black;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    button {
+      flex: 1;
+      padding: 10px 0;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    button:first-child {
+      margin-right: 10px;
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 47%, rgba(252, 176, 69, 1) 100%);
+    }
+
+    #submitBtn {
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 95%, rgba(252, 176, 69, 1) 100%);
+    }
+
+    #submitBtn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, rgba(153, 68, 200, 1) 0%, rgba(255, 49, 49, 1) 95%, rgba(255, 186, 80, 1) 100%);
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+     #reset:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, rgba(153, 68, 200, 1) 0%, rgba(255, 49, 49, 1) 95%, rgba(255, 186, 80, 1) 100%);
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .output {
+      margin-top: 25px;
+      background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+      border-left: 4px solid #007bff;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 15px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h2>Student Registration</h2>
+    <form id="studentForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="rollno">Roll No</label>
+        <input type="number" id="rollno" placeholder="Your roll number" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email ID</label>
+        <input type="email" id="email" placeholder="Your email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department</label>
+        <select id="department" required>
+          <option value="">Select</option>
+          <option value="CT">CT</option>
+          <option value="BCA">BCA</option>
+          <option value="IT">IT</option>
+        </select>
+      </div>
+
+      <div class="btn-group">
+        <button type="reset" id="reset">Clear</button>
+        <button type="submit" id="submitBtn">Submit</button>
+      </div>
+    </form>
+
+    <div class="output" id="output" style="display: none;"></div>
+  </div>
+
+  <script>
+    document.getElementById("studentForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const rollno = document.getElementById("rollno").value;
+      const email = document.getElementById("email").value;
+      const department = document.getElementById("department").value;
+
+      // Show alert with submitted data
+      alert(`Submitted Information:\nName: ${name}\nRoll No: ${rollno}\nEmail: ${email}\nDepartment: ${department}`);
+
+      const output = document.getElementById("output");
+      output.style.display = "block";
+      output.innerHTML = `
+        <strong>Submitted Info:</strong><br/>
+        Name: ${name}<br/>
+        Roll No: ${rollno}<br/>
+        Email: ${email}<br/>
+        Department: ${department}
+      `;
+    });
+  </script>
+
+</body>
+
+</html>
